@@ -13,3 +13,6 @@
  - equals方法与hashCode方法根本就是**配套使用的**。对于任何一个对象，不论是使用继承自Object的equals方法还是重写equals方法。hashCode方法实际上必须要完成的一件事情就是，为该equals方法认定为相同的对象返回相同的哈希值。
  - hashCode方法的重写原则就是保证equals方法认定为相同的两个对象拥有相同的哈希值
   - 被String类中的equals方法认定为相等的两个对象拥有两个不同的哈希值（因为他们的地址值不同）
+
+  ### HashMap
+ ![5](./image/5.png)
