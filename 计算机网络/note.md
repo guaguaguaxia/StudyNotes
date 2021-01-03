@@ -146,14 +146,21 @@
    - CSRF主动防御措施：Token验证 或者 双重Cookie验证 以及配合Samesite Cookie。
    - 保证页面的幂等性，后端接口不要在GET页面中做用户操作。
 ## TCP 在什么情况下服务端会出现大量 CLOSE_WAIT
-
+- 资源没有关闭
 ## SSL握手流程为什么要使用对称秘钥？
-
-## 简述在四层和七层网络协议中负载均衡的原理
+- https://www.ruanyifeng.com/blog/2014/02/ssl_tls.html
 
 ## DDOS
+- HTTP 请求的拦截,拦截特征IP
+  - （1）专用硬件
+  - （2）本机防火墙
+  - （3）Web 服务器
+- 带宽扩容
+- CDN
 
 ## BGP和OSPF
+
+## 简述在四层和七层网络协议中负载均衡的原理
 
 
 
