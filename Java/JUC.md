@@ -14,10 +14,6 @@ Java 常见锁有哪些？ReetrantLock 是怎么实现的？
 
 简述 Java 的 happen before 原则
 
-简述 Synchronized，Volatile，可重入锁的不同使用场景及优缺点
-
-synchronized 关键字底层是如何实现的？它与 Lock 相比优缺点分别是什么？
-
 Java 是如何实现线程安全的，哪些数据结构是线程安全的？
 
 Java 线程池里的 arrayblockingqueue 与 linkedblockingqueue 的使用场景和区别
