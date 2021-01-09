@@ -18,5 +18,17 @@
 ## Java 常见锁有哪些？ReetrantLock 是怎么实现的？
 - AQS
 
-## 简述 Java 的 happen before 原则
 
+## Java内存模型
+- 导致可见性的原因是缓存，导致有序性的原因是编译优化，那解决可见性、有序性最直接的办法就是禁用缓存和编译优化
+- 合理的方案应该是按需禁用缓存以及编译优化
+- Java 内存模型规范了 JVM 如何提供按需禁用缓存和编译优化的方法，具体来说，这些方法包括 volatile、synchronized 和 final 三个关键字，以及六项 Happens-Before 规则
+
+## 简述 Java 的 happen before 原则
+- 前面一个操作的结果对后续操作是可见的
+- 程序的顺序性规则
+- volatile 变量规则
+- 传递性
+- 管程中锁的规则
+- 线程 start() 规则
+- 线程 join() 规则
