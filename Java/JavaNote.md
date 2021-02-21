@@ -123,3 +123,20 @@ public class Singleton{
 ## 手写生产者消费者模型
 
 ## 工厂模式
+
+## Integer缓存池
+- new Integer(123) 与 Integer.valueOf(123) 的区别在于: new Integer(123) 每次都会新建一个对象 Integer.valueOf(123) 会使用缓存池中的对象，多次调用会取得同一个对象的引用。
+
+## String 被声明为 final
+- 可以缓存 hash 值，因为 String 的 hash 值经常被使用，例如 String 用做 HashMap 的 key。不可变的特性可以使得 hash 值也不可变，因此只需要进行一次计算。
+- String Pool 的需要，字符串池
+- 安全性，字符经常被作为参数
+- 线程安全
+
+## static初始化顺序
+父类(静态变量、静态语句块)
+子类(静态变量、静态语句块)
+父类(实例变量、普通语句块)
+父类(构造函数)
+子类(实例变量、普通语句块)
+子类(构造函数)
