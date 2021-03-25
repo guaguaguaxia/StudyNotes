@@ -4,3 +4,5 @@
 - 应用层利用缓存+队列+分布式处理好订单。
 - 做好数据的预估，隔离，合并。
 - 上线之前记得进行压力测试。
+
+https://mp.weixin.qq.com/s/KWb3POodisbOEsQVblsoGw
