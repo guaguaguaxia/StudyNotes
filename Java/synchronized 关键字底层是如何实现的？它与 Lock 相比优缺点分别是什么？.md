@@ -18,3 +18,5 @@
 
 ##总结
 > synchronized线程安全的语义实现最终依赖一个叫monitor的东西，在HotSpot虚拟机中是用ObjectMonitor这个数据结构实现的。这个结构有几个重要的变量，有一个叫cxq的竞争队列，所有请求锁的线程会通过CAS指令被放到这个队列中，有一个Entrylist队列存储有资格成为候选资源的线程，有一个WaitSet存储因为调用wait方法而被阻塞的线程，还有一个recursions记录重入次数
+
+> Synchronized和Lock区别，1.API层面，2.等待可中断，3.公平锁，4.锁绑定多个条件
