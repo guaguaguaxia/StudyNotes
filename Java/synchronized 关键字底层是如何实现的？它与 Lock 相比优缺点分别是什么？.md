@@ -8,3 +8,13 @@
 - monitor竞争
   - 通过CAS尝试把monitor的owner字段设置为当前线程。
   - 如果设置之前的owner指向当前线程，说明当前线程再次进入monitor，即重入锁，执行recursions ++ ，记录重入的次数。如果当前线程是第一次进入该monitor，设置recursions为1，_owner为当前线程，该线程成功获得锁并返回。
+
+- monitor等待
+  - 在for循环中，通过CAS把node节点push到_cxq列表中，同一时刻可能有多个线程把自己的node节点push到_cxq列表中。
+  - node节点push到_cxq列表之后，通过自旋尝试获取锁，如果还是没有获取到锁，则通过park将当前线程挂起，等待被唤醒。
+
+- monitor释放
+  - 根据不同的策略（由QMode指定），从cxq或EntryList中获取头节点
+
+##总结
+> synchronized线程安全的语义实现最终依赖一个叫monitor的东西，在HotSpot虚拟机中是用ObjectMonitor这个数据结构实现的。这个结构有几个重要的变量，有一个叫cxq的竞争队列，所有请求锁的线程会通过CAS指令被放到这个队列中，有一个Entrylist队列存储有资格成为候选资源的线程，有一个WaitSet存储因为调用wait方法而被阻塞的线程，还有一个recursions记录重入次数
