@@ -1,0 +1,1 @@
+http用post delete put get 来对微服务的数据直接进行增删改查 每个服务提供这些api供其他服务调用。
