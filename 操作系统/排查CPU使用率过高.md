@@ -6,3 +6,5 @@
 - top -p pid -H 查看进程PID的每一个线程占用CPU情况
 
 - PID转化成16进制为，jstack pid | grep a3a4
+
+- 内存top再按M
