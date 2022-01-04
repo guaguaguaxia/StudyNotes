@@ -145,6 +145,9 @@ Example:
  curl --abstract-unix-socket socketpath https://example.com
 ```
 
+See also --unix-socket. Added in 7.53.0.
+
+
 **--alt-svc <file name\>**
 
 [HTTP Alternative Services 介绍]("https://imququ.com/post/http-alt-svc.html")
@@ -159,3 +162,6 @@ Example:
 ```
  curl --alt-svc svc.txt https://example.com
 ```
+
+See also --resolve and --connect-to. Added in 7.64.1.
+
