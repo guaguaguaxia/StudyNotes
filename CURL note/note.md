@@ -163,5 +163,5 @@ Example:
  curl --alt-svc svc.txt https://example.com
 ```
 
-See also --resolve and --connect-to. Added in 7.64.1.
-
+See also --resolve and --connect-to. Added in 7.64.1.  
+as
