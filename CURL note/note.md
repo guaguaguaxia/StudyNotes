@@ -209,3 +209,38 @@ Example:
 ```
 
 参见 --basic 和 -u, --user。
+
+**--basic**
+
+(HTTP) 告诉curl对远程主机使用HTTP Basic认证。这是默认的，这个选项通常是没有意义的，除非你用它来覆盖先前设置的选项，该选项设置了不同的认证方法（如 --ntlm, --digest, 或 --negotiate）。
+
+与-u, --user一起使用。
+
+Example:
+```
+ curl -u name:password --basic https://example.com
+```
+ 另见 --proxy-basic.
+
+ **--cacert <file>**
+
+ (TLS) 告诉curl使用指定的证书文件来验证对方。该文件可以包含多个CA证书。证书必须是PEM格式。通常情况下，curl会使用一个默认的文件，所以这个选项通常用来改变这个默认文件。
+
+ 如果环境变量'CURL_CA_BUNDLE'被设置，curl会识别它，并使用给定的路径作为CA证书包的路径。这个选项覆盖了这个变量。
+
+ windows版本的curl会自动寻找一个名为'curl-ca-bundle.crt'的CA证书文件，可以在curl.exe的同一目录下，也可以在当前工作目录下，或者在你的PATH中的任何文件夹下。
+
+ 如果curl是针对NSS SSL库构建的，那么NSS PEM PKCS#11模块（libnsspem.so）需要可用，以便该选项能够正常工作。
+
+ (仅限iOS和macOS）如果curl是针对安全传输构建的，那么为了向后兼容其他SSL引擎，这个选项是支持的，但不应该被设置。如果不设置该选项，那么curl将使用系统和用户钥匙串中的证书来验证对等体，这是验证对等体证书链的首选方法。
+
+(仅限Schannel）该选项在Windows 7或更高版本的libcurl 7.60或更高版本的Schannel中被支持。支持该选项是为了向后兼容其他SSL引擎；相反，建议使用Windows的根证书存储（Schannel的默认）。
+
+如果这个选项被多次使用，将使用最后一个选项。
+
+Example:
+```
+ curl --cacert CA-file.txt https://example.com
+```
+
+参见 --capath 和 -k, --insecure。
