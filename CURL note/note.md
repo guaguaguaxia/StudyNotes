@@ -167,3 +167,45 @@ See also --resolve and --connect-to. Added in 7.64.1.
 
 **--anyauth**
 
+
+(HTTP) 告诉curl自己找出认证方法，并使用远程站点声称支持的最安全的方法。这是通过首先做一个请求并检查响应头文件来完成的，因此可能会引起额外的网络往返。这是用来代替设置一个特定的认证方法的，你可以用--basic, --digest, --ntlm, 和 --negotiate.来做。
+
+如果你从stdin上传，不建议使用--anyauth，因为它可能要求数据被发送两次，然后客户端必须能够回退。如果从stdin上传时出现这种需要，上传操作会失败。
+
+与-u, --user一起使用。
+
+Example:
+
+```
+ curl --anyauth --user me:pwd https://example.com
+```
+
+另见 --proxy-anyauth, --basic 和 --digest。
+
+**-a, --append**
+
+(FTP SFTP)当在上传中使用时，这将使curl追加到目标文件中，而不是覆盖它。如果远程文件不存在，它将被创建。注意，这个标志会被一些SFTP服务器（包括OpenSSH）所忽略。
+
+Example:
+```
+ curl --upload-file local --append ftp://example.com/
+```
+
+另见-r, -range和-C, --continue-at。
+
+**--aws-sigv4 <provider1[:provider2[:region[:service]]]>**
+
+在传输中使用AWS V4签名认证。
+
+提供者参数是一个字符串，在创建外发认证头时被算法使用。
+
+区域参数是一个字符串，当区域名称在端点中被省略时，它指向资源集合的一个地理区域（区域-代码）。
+
+服务参数是一个字符串，当服务名称在端点中被省略时，它指向一个由云提供的函数（服务代码）。
+
+Example:
+```
+ curl --aws-sigv4 "aws:amz:east-2:es" --user "key:secret" https://example.com
+```
+
+参见 --basic 和 -u, --user。
