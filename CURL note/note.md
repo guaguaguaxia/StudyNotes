@@ -245,4 +245,19 @@ Example:
 
 参见 --capath 和 -k, --insecure。
 
+**--capath <dir\>**
 
+(TLS) 告诉curl使用指定的证书目录来验证对方。可以提供多个路径，用": "隔开（例如 "path1:path2:path3"）。证书必须是PEM格式，如果curl是针对OpenSSL构建的，该目录必须已经用OpenSSL提供的c_rehash工具处理过。如果--cacert文件包含许多CA证书，使用--capath可以使OpenSSL驱动的curl比使用--cacert更有效地进行SSL连接。
+
+如果设置了这个选项，默认的capath值将被忽略，如果它被多次使用，将使用最后一个。
+
+Example:
+```
+ curl --capath /local/directory https://example.com
+```
+
+参见 --cacert 和 -k, --insecure。
+
+**--cert-status**
+
+(TLS) 告诉curl通过使用证书状态请求（又称OCSP装订）TLS扩展来验证服务器证书的状态。
