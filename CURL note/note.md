@@ -261,3 +261,60 @@ Example:
 **--cert-status**
 
 (TLS) 告诉curl通过使用证书状态请求（又称OCSP装订）TLS扩展来验证服务器证书的状态。
+
+如果该选项被启用，并且服务器发送了一个无效的（如过期）响应，如果该响应表明服务器证书已被撤销，或者根本没有收到任何响应，则验证失败。
+
+这一点目前只在OpenSSL、GnuTLS和NSS后端实现。
+
+Example:
+```
+ curl --cert-status https://example.com
+```
+另请参见 --pinnedpubkey。
+
+**--cert-type <type\>**
+
+(TLS) 告诉 curl 所提供的客户证书使用的是什么类型。PEM, DER, ENG 和 P12 是公认的类型。如果没有指定，则假定为PEM
+
+如果这个选项被多次使用，将使用最后一个选项。
+
+Example:
+```
+ curl --cert-type PEM --cert file https://example.com
+```
+
+参见-E, --cert, --key 和 --key-type。
+
+**-E, --cert <certificate[:password]>**
+
+(TLS) 告诉curl在用HTTPS、FTPS或其他基于SSL的协议获取文件时使用指定的客户证书文件。如果使用安全传输，证书必须是PKCS#12格式，如果使用任何其他引擎，必须是PEM格式。如果没有指定可选的密码，它将在终端上被查询到。请注意，这个选项假定有一个 "证书 "文件，它是私钥和客户证书的串联!参见 -E, --cert 和 --key 来单独指定它们。
+
+如果curl是针对NSS SSL库构建的，那么这个选项可以告诉curl在环境变量SSL_DIR（或默认为/etc/pki/nssdb）定义的NSS数据库中使用证书的昵称。如果NSS的PEM PKCS#11模块（libnsspem.so）可用，那么可以加载PEM文件。如果你想使用当前目录下的文件，请在其前面加上"./"前缀，以避免与昵称混淆。如果昵称包含":"，需要在它前面加上"\"，这样它就不会被识别为密码分隔符。如果昵称包含"\"，它需要被转义为"\\"，这样它就不会被识别为一个转义字符。
+
+如果curl是根据OpenSSL库构建的，并且pkcs11引擎是可用的，那么PKCS#11 URI（RFC 7512）就可以用来指定位于PKCS#11设备中的证书。一个以 "pkcs11: "开头的字符串将被解释为一个PKCS#11 URI。如果提供了一个PKCS#11 URI，那么--engine选项将被设置为 "pkcs11"，如果没有提供，--cert类型选项将被设置为 "ENG"。
+
+(仅限iOS和macOS）如果curl是针对安全传输构建的，那么证书字符串可以是系统或用户钥匙串中的证书/私钥的名称，或者是PKCS#12编码的证书和私钥的路径。如果你想使用当前目录下的文件，请在其前面加上"./"前缀，以避免与昵称混淆。
+
+(仅适用于Schannel)客户证书必须通过路径表达式指定到一个证书商店。(不支持加载PFX，你可以先把它导入到一个商店)。你可以使用"<store location>/<store name>/<thumbprint>"来引用系统证书库中的证书，例如，"CurrentUser\MY\934a7ac6f8a5d579285a74fa61e19f23ddfe8d7a"。缩略图通常是一个SHA-1十六进制字符串，你可以在证书细节中看到。支持以下存储位置。CurrentUser, LocalMachine, CurrentService, Services, CurrentUserGroupPolicy, LocalMachineGroupPolicy, LocalMachineEnterprise。
+
+如果这个选项被多次使用，将使用最后一个选项。
+
+Example:
+```
+ curl --cert certfile --key keyfile https://example.com
+```
+另请参见 --cert-type, --key 和 --key-type。
+
+**--ciphers <list of ciphers\>**
+
+(TLS) 指定在连接中使用哪些密码。密码列表必须指定有效的密码。在这个网址上阅读关于SSL密码列表的细节。
+``` 
+https://curl.se/docs/ssl-ciphers.html
+```
+如果这个选项被多次使用，将使用最后一个选项。
+
+Example:
+```
+ curl --ciphers ECDHE-ECDSA-AES256-CCM8 https://example.com
+```
+参见-tlsv1.3。
