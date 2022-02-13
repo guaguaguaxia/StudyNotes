@@ -319,12 +319,3 @@ Example:
 ```
 参见-tlsv1.3。
 
-**--compressed-ssh**
-(SCP SFTP) 启用内置的SSH压缩。这是一个请求，不是一个命令；服务器可能会做也可能不会做。
-Example:
-```
- curl --compressed-ssh sftp://example.com/
-```
-另见 --compressed
-
-**--compressed**
